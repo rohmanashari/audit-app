@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Audit Records</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+
+    form input, form button {
+      padding: 6px;
+      margin-bottom: 6px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: left;
+    }
+
+    .actions button {
+      font-size: 12px;
+      padding: 3px 6px;
+    }
+
+    #searchBox {
+      padding: 6px;
+      width: 300px;
+      margin-bottom: 10px;
+    }
+
+    #loading {
+      font-style: italic;
+      color: #555;
+      margin: 6px 0;
+    }
+
+    #emptyState {
+      margin: 6px 0;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<h2 id="formTitle">Tambah Data Audit</h2>
+
+<form id="auditForm">
+  <input type="hidden" id="recordId">
+
+  <div>
+    <label>Deskripsi</label><br>
+    <input type="text" id="description" required>
+  </div>
+
+  <div>
+    <label>Amount</label><br>
+    <input type="text" id="amount" placeholder="Contoh: 1000000" required>
+  </div>
+
+  <button type="submit">Simpan</button>
+  <button type="button" id="cancelEdit" style="display:none">Batal</button>
+</form>
+
+<hr>
+
+<!-- 🔍 SEARCH -->
+<input
+  type="text"
+  id="searchBox"
+  placeholder="Cari deskripsi audit..."
+  disabled
+>
+
+<!-- UX POLISH -->
+<p id="loading" style="display:none;">⏳ Memuat data...</p>
+<p id="emptyState" style="display:none;">Tidak ada data audit yang cocok.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Deskripsi</th>
+      <th>Amount</th>
+      <th>Tanggal</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<p id="pageInfo"></p>
+<button id="prevBtn">Prev</button>
+<button id="nextBtn">Next</button>
+
+<script src="app.js"></script>
+</body>
+</html>

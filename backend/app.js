@@ -25,6 +25,13 @@ const db = new sqlite3.Database(dbPathResolved, (err) => {
 });
 
 // =====================
+// ROOT CHECK (WAJIB UNTUK DEPLOY)
+// =====================
+app.get('/', (req, res) => {
+  res.send('Audit App API is running 🚀');
+});
+
+// =====================
 // ROUTES
 // =====================
 app.get('/records', (req, res) => {
@@ -73,5 +80,5 @@ app.get('/records', (req, res) => {
 // SERVER
 // =====================
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
